@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href = "styles.css" rel = "stylesheet" type = "text/css">
+    <script src="sudoku.js"></script>
+</head>
+
+<button type="button" onclick="testFunc()">Solve</button>
+<body onkeypress="testFunction()">
+    <!--id = y x || column row-->
+    <div id = "grid" class="grid-container">
+        <div onclick="getCell(id)" id = "00" contenteditable class="grid-item">1</div>
+        <div id = "01" contenteditable class="grid-item">0</div>
+        <div id = "02" contenteditable class="grid-item">6</div>
+        <div id = "03"contenteditable class="grid-item">0</div>
+        <div id = "04"contenteditable class="grid-item">0</div>
+        <div id = "05"contenteditable class="grid-item">2</div>
+        <div id = "06"contenteditable class="grid-item">3</div>
+        <div id = "07"contenteditable class="grid-item">0</div>
+        <div id = "08"contenteditable class="grid-item">0</div>
+
+        <div id = "10"contenteditable class="grid-item">0</div>
+        <div id = "11"contenteditable class="grid-item">5</div>
+        <div id = "12"contenteditable class="grid-item">0</div>
+        <div id = "13"contenteditable class="grid-item">0</div>
+        <div id = "14"contenteditable class="grid-item">0</div>
+        <div id = "15"contenteditable class="grid-item">6</div>
+        <div id = "16"contenteditable class="grid-item">0</div>
+        <div id = "17"contenteditable class="grid-item">9</div>
+        <div id = "18"contenteditable class="grid-item">1</div>
+
+        <div id = "20"contenteditable class="grid-item">0</div>
+        <div id = "21"contenteditable class="grid-item">0</div>
+        <div id = "22"contenteditable class="grid-item">9</div>
+        <div id = "23"contenteditable class="grid-item">5</div>
+        <div id = "24"contenteditable class="grid-item">0</div>
+        <div id = "25"contenteditable class="grid-item">1</div>
+        <div id = "26"contenteditable class="grid-item">4</div>
+        <div id = "27"contenteditable class="grid-item">6</div>
+        <div id = "28"contenteditable class="grid-item">2</div>
+
+        <div id = "30"contenteditable class="grid-item">0</div>
+        <div id = "31"contenteditable class="grid-item">3</div>
+        <div id = "32"contenteditable class="grid-item">7</div>
+        <div id = "33"contenteditable class="grid-item">9</div>
+        <div id = "34"contenteditable class="grid-item">0</div>
+        <div id = "35"contenteditable class="grid-item">5</div>
+        <div id = "36"contenteditable class="grid-item">0</div>
+        <div id = "37"contenteditable class="grid-item">0</div>
+        <div id = "38"contenteditable class="grid-item">0</div>
+
+        <div id = "40"contenteditable class="grid-item">5</div>
+        <div id = "41"contenteditable class="grid-item">8</div>
+        <div id = "42"contenteditable class="grid-item">1</div>
+        <div id = "43"contenteditable class="grid-item">0</div>
+        <div id = "44"contenteditable class="grid-item">2</div>
+        <div id = "45"contenteditable class="grid-item">7</div>
+        <div id = "46"contenteditable class="grid-item">9</div>
+        <div id = "47"contenteditable class="grid-item">0</div>
+        <div id = "48"contenteditable class="grid-item">0</div>
+
+        <div id = "50"contenteditable class="grid-item">0</div>
+        <div id = "51"contenteditable class="grid-item">0</div>
+        <div id = "52"contenteditable class="grid-item">0</div>
+        <div id = "53"contenteditable class="grid-item">4</div>
+        <div id = "54"contenteditable class="grid-item">0</div>
+        <div id = "55"contenteditable class="grid-item">8</div>
+        <div id = "56"contenteditable class="grid-item">1</div>
+        <div id = "57"contenteditable class="grid-item">5</div>
+        <div id = "58"contenteditable class="grid-item">7</div>
+
+        <div id = "60"contenteditable class="grid-item">0</div>
+        <div id = "61"contenteditable class="grid-item">0</div>
+        <div id = "62"contenteditable class="grid-item">0</div>
+        <div id = "63"contenteditable class="grid-item">2</div>
+        <div id = "64"contenteditable class="grid-item">6</div>
+        <div id = "65"contenteditable class="grid-item">0</div>
+        <div id = "66"contenteditable class="grid-item">5</div>
+        <div id = "67"contenteditable class="grid-item">4</div>
+        <div id = "68"contenteditable class="grid-item">0</div>
+
+        <div id = "70"contenteditable class="grid-item">0</div>
+        <div id = "71"contenteditable class="grid-item">0</div>
+        <div id = "72"contenteditable class="grid-item">4</div>
+        <div id = "73"contenteditable class="grid-item">1</div>
+        <div id = "74"contenteditable class="grid-item">5</div>
+        <div id = "75"contenteditable class="grid-item">0</div>
+        <div id = "76"contenteditable class="grid-item">6</div>
+        <div id = "77"contenteditable class="grid-item">0</div>
+        <div id = "78"contenteditable class="grid-item">9</div>
+
+        <div id = "80"contenteditable class="grid-item">9</div>
+        <div id = "81"contenteditable class="grid-item">0</div>
+        <div id = "82"contenteditable class="grid-item">0</div>
+        <div id = "83"contenteditable class="grid-item">8</div>
+        <div id = "84"contenteditable class="grid-item">7</div>
+        <div id = "85"contenteditable class="grid-item">4</div>
+        <div id = "86"contenteditable class="grid-item">2</div>
+        <div id = "87"contenteditable class="grid-item">1</div>
+        <div id = "88"contenteditable class="grid-item">0</div>
+    </div>
+</body>
+
+</html>
