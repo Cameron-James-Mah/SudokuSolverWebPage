@@ -1,3 +1,4 @@
+/*
 .grid-container {
   display: inline-grid;
   -ms-layout-grid: fixed;
@@ -20,4 +21,34 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}*/
+
+table {
+  border-collapse: collapse;
+}
+colgroup,
+tbody {
+  border: solid medium;
+}
+td {
+  border: solid thin;
+  height: 2.4em;
+  width: 2.4em;
+  text-align: center;
+  font-size: 30px;
+  padding: 0;
+}
+
+input {
+  border: solid thin;
+  height: 2.4em;
+  width: 2.4em;
+  text-align: center;
+  font-size: 30px;
+  padding: 0;
+}
+
+button {
+  padding: 15px 32px;
+  font-size: 15px;
 }

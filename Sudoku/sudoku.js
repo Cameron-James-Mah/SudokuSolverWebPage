@@ -2,130 +2,140 @@ let sudoku = [];
     for(let i = 0; i < 9; i++){
         sudoku[i] = [];
         for(let j = 0; j < 9; j++){
-            sudoku[i][j] = null;
+            sudoku[i][j] = 0;
         }
     }
 
-let currCell = "";
+let solved = false;
+
 function testFunc(){
     
-    sudoku[0][0] = document.getElementById("00").innerHTML;
-    sudoku[0][1] = document.getElementById("01").innerHTML;
-    sudoku[0][2] = document.getElementById("02").innerHTML;
-    sudoku[0][3] = document.getElementById("03").innerHTML;
-    sudoku[0][4] = document.getElementById("04").innerHTML;
-    sudoku[0][5] = document.getElementById("05").innerHTML;
-    sudoku[0][6] = document.getElementById("06").innerHTML;
-    sudoku[0][7] = document.getElementById("07").innerHTML;
-    sudoku[0][8] = document.getElementById("08").innerHTML;
+    sudoku[0][0] = document.getElementById("00").value;
+    sudoku[0][1] = document.getElementById("01").value;
+    sudoku[0][2] = document.getElementById("02").value;
+    sudoku[0][3] = document.getElementById("03").value;
+    sudoku[0][4] = document.getElementById("04").value;
+    sudoku[0][5] = document.getElementById("05").value;
+    sudoku[0][6] = document.getElementById("06").value;
+    sudoku[0][7] = document.getElementById("07").value;
+    sudoku[0][8] = document.getElementById("08").value;
 
-    sudoku[1][0] = document.getElementById("10").innerHTML;
-    sudoku[1][1] = document.getElementById("11").innerHTML;
-    sudoku[1][2] = document.getElementById("12").innerHTML;
-    sudoku[1][3] = document.getElementById("13").innerHTML;
-    sudoku[1][4] = document.getElementById("14").innerHTML;
-    sudoku[1][5] = document.getElementById("15").innerHTML;
-    sudoku[1][6] = document.getElementById("16").innerHTML;
-    sudoku[1][7] = document.getElementById("17").innerHTML;
-    sudoku[1][8] = document.getElementById("18").innerHTML;
+    sudoku[1][0] = document.getElementById("10").value;
+    sudoku[1][1] = document.getElementById("11").value;
+    sudoku[1][2] = document.getElementById("12").value;
+    sudoku[1][3] = document.getElementById("13").value;
+    sudoku[1][4] = document.getElementById("14").value;
+    sudoku[1][5] = document.getElementById("15").value;
+    sudoku[1][6] = document.getElementById("16").value;
+    sudoku[1][7] = document.getElementById("17").value;
+    sudoku[1][8] = document.getElementById("18").value;
 
-    sudoku[2][0] = document.getElementById("20").innerHTML;
-    sudoku[2][1] = document.getElementById("21").innerHTML;
-    sudoku[2][2] = document.getElementById("22").innerHTML;
-    sudoku[2][3] = document.getElementById("23").innerHTML;
-    sudoku[2][4] = document.getElementById("24").innerHTML;
-    sudoku[2][5] = document.getElementById("25").innerHTML;
-    sudoku[2][6] = document.getElementById("26").innerHTML;
-    sudoku[2][7] = document.getElementById("27").innerHTML;
-    sudoku[2][8] = document.getElementById("28").innerHTML;
+    sudoku[2][0] = document.getElementById("20").value;
+    sudoku[2][1] = document.getElementById("21").value;
+    sudoku[2][2] = document.getElementById("22").value;
+    sudoku[2][3] = document.getElementById("23").value;
+    sudoku[2][4] = document.getElementById("24").value;
+    sudoku[2][5] = document.getElementById("25").value;
+    sudoku[2][6] = document.getElementById("26").value;
+    sudoku[2][7] = document.getElementById("27").value;
+    sudoku[2][8] = document.getElementById("28").value;
 
-    sudoku[3][0] = document.getElementById("30").innerHTML;
-    sudoku[3][1] = document.getElementById("31").innerHTML;
-    sudoku[3][2] = document.getElementById("32").innerHTML;
-    sudoku[3][3] = document.getElementById("33").innerHTML;
-    sudoku[3][4] = document.getElementById("34").innerHTML;
-    sudoku[3][5] = document.getElementById("35").innerHTML;
-    sudoku[3][6] = document.getElementById("36").innerHTML;
-    sudoku[3][7] = document.getElementById("37").innerHTML;
-    sudoku[3][8] = document.getElementById("38").innerHTML;
+    sudoku[3][0] = document.getElementById("30").value;
+    sudoku[3][1] = document.getElementById("31").value;
+    sudoku[3][2] = document.getElementById("32").value;
+    sudoku[3][3] = document.getElementById("33").value;
+    sudoku[3][4] = document.getElementById("34").value;
+    sudoku[3][5] = document.getElementById("35").value;
+    sudoku[3][6] = document.getElementById("36").value;
+    sudoku[3][7] = document.getElementById("37").value;
+    sudoku[3][8] = document.getElementById("38").value;
 
-    sudoku[4][0] = document.getElementById("40").innerHTML;
-    sudoku[4][1] = document.getElementById("41").innerHTML;
-    sudoku[4][2] = document.getElementById("42").innerHTML;
-    sudoku[4][3] = document.getElementById("43").innerHTML;
-    sudoku[4][4] = document.getElementById("44").innerHTML;
-    sudoku[4][5] = document.getElementById("45").innerHTML;
-    sudoku[4][6] = document.getElementById("46").innerHTML;
-    sudoku[4][7] = document.getElementById("47").innerHTML;
-    sudoku[4][8] = document.getElementById("48").innerHTML;
+    sudoku[4][0] = document.getElementById("40").value;
+    sudoku[4][1] = document.getElementById("41").value;
+    sudoku[4][2] = document.getElementById("42").value;
+    sudoku[4][3] = document.getElementById("43").value;
+    sudoku[4][4] = document.getElementById("44").value;
+    sudoku[4][5] = document.getElementById("45").value;
+    sudoku[4][6] = document.getElementById("46").value;
+    sudoku[4][7] = document.getElementById("47").value;
+    sudoku[4][8] = document.getElementById("48").value;
 
-    sudoku[5][0] = document.getElementById("50").innerHTML;
-    sudoku[5][1] = document.getElementById("51").innerHTML;
-    sudoku[5][2] = document.getElementById("52").innerHTML;
-    sudoku[5][3] = document.getElementById("53").innerHTML;
-    sudoku[5][4] = document.getElementById("54").innerHTML;
-    sudoku[5][5] = document.getElementById("55").innerHTML;
-    sudoku[5][6] = document.getElementById("56").innerHTML;
-    sudoku[5][7] = document.getElementById("57").innerHTML;
-    sudoku[5][8] = document.getElementById("58").innerHTML;
+    sudoku[5][0] = document.getElementById("50").value;
+    sudoku[5][1] = document.getElementById("51").value;
+    sudoku[5][2] = document.getElementById("52").value;
+    sudoku[5][3] = document.getElementById("53").value;
+    sudoku[5][4] = document.getElementById("54").value;
+    sudoku[5][5] = document.getElementById("55").value;
+    sudoku[5][6] = document.getElementById("56").value;
+    sudoku[5][7] = document.getElementById("57").value;
+    sudoku[5][8] = document.getElementById("58").value;
 
-    sudoku[6][0] = document.getElementById("60").innerHTML;
-    sudoku[6][1] = document.getElementById("61").innerHTML;
-    sudoku[6][2] = document.getElementById("62").innerHTML;
-    sudoku[6][3] = document.getElementById("63").innerHTML;
-    sudoku[6][4] = document.getElementById("64").innerHTML;
-    sudoku[6][5] = document.getElementById("65").innerHTML;
-    sudoku[6][6] = document.getElementById("66").innerHTML;
-    sudoku[6][7] = document.getElementById("67").innerHTML;
-    sudoku[6][8] = document.getElementById("68").innerHTML;
+    sudoku[6][0] = document.getElementById("60").value;
+    sudoku[6][1] = document.getElementById("61").value;
+    sudoku[6][2] = document.getElementById("62").value;
+    sudoku[6][3] = document.getElementById("63").value;
+    sudoku[6][4] = document.getElementById("64").value;
+    sudoku[6][5] = document.getElementById("65").value;
+    sudoku[6][6] = document.getElementById("66").value;
+    sudoku[6][7] = document.getElementById("67").value;
+    sudoku[6][8] = document.getElementById("68").value;
 
-    sudoku[7][0] = document.getElementById("70").innerHTML;
-    sudoku[7][1] = document.getElementById("71").innerHTML;
-    sudoku[7][2] = document.getElementById("72").innerHTML;
-    sudoku[7][3] = document.getElementById("73").innerHTML;
-    sudoku[7][4] = document.getElementById("74").innerHTML;
-    sudoku[7][5] = document.getElementById("75").innerHTML;
-    sudoku[7][6] = document.getElementById("76").innerHTML;
-    sudoku[7][7] = document.getElementById("77").innerHTML;
-    sudoku[7][8] = document.getElementById("78").innerHTML;
+    sudoku[7][0] = document.getElementById("70").value;
+    sudoku[7][1] = document.getElementById("71").value;
+    sudoku[7][2] = document.getElementById("72").value;
+    sudoku[7][3] = document.getElementById("73").value;
+    sudoku[7][4] = document.getElementById("74").value;
+    sudoku[7][5] = document.getElementById("75").value;
+    sudoku[7][6] = document.getElementById("76").value;
+    sudoku[7][7] = document.getElementById("77").value;
+    sudoku[7][8] = document.getElementById("78").value;
 
-    sudoku[8][0] = document.getElementById("80").innerHTML;
-    sudoku[8][1] = document.getElementById("81").innerHTML;
-    sudoku[8][2] = document.getElementById("82").innerHTML;
-    sudoku[8][3] = document.getElementById("83").innerHTML;
-    sudoku[8][4] = document.getElementById("84").innerHTML;
-    sudoku[8][5] = document.getElementById("85").innerHTML;
-    sudoku[8][6] = document.getElementById("86").innerHTML;
-    sudoku[8][7] = document.getElementById("87").innerHTML;
-    sudoku[8][8] = document.getElementById("88").innerHTML;
+    sudoku[8][0] = document.getElementById("80").value;
+    sudoku[8][1] = document.getElementById("81").value;
+    sudoku[8][2] = document.getElementById("82").value;
+    sudoku[8][3] = document.getElementById("83").value;
+    sudoku[8][4] = document.getElementById("84").value;
+    sudoku[8][5] = document.getElementById("85").value;
+    sudoku[8][6] = document.getElementById("86").value;
+    sudoku[8][7] = document.getElementById("87").value;
+    sudoku[8][8] = document.getElementById("88").value;
     /*
     myArr[0][0] = 9;
-    document.getElementById("00").innerHTML = myArr[0][0]*/
-    //alert(document.getElementById("00").innerHTML);
+    document.getElementById("00").innerText = myArr[0][0]*/
+    //alert(document.getElementById("00").innerText);
     //alert(getPossibilities(myArr, 0, 0));
     //getPossibilities(myArr, 0, 0);
+    //alert(document.getElementById("00").value);
+    //alert(sudoku);
+
+    
     if(validate(sudoku) == true){
-        solve(0, 0, false);
+        solve(0, 0);
     }
     else{
         alert("Invalid Sudoku");
     }
-    //alert(myArr);
-}
-
-function testFunction(){
-    //alert("Hi");
-}
-
-function getCell(yx){
-    currCell =  String(yx);
-    alert(currCell); 
-
-}
-
-function delayDisplay(y, x, val){
+    //alert(sudoku);
     
+    
+    
+    //alert(sudoku);
+   
+    //alert(sudoku);
+   //getPossibilities(0, 8);
 }
+
+
+function reset(){
+    for(let i = 0; i < 9; i++){
+        sudoku[i] = [];
+        for(let j = 0; j < 9; j++){
+            sudoku[i][j] = 0;
+            document.getElementById(String(i)+String(j)).value = 0;
+        }
+    }
+}
+
 
 function validate(board){
     let squareSet = new Set();
@@ -262,13 +272,18 @@ function validate(board){
         return true;
 }
 
-function solve(y, x, solved){
+
+
+function solve(y, x){
+    //alert(sudoku);
     let possibleVect = [];
-    let tempString = String(y)+String(x); 
+    let tempString = String(y)+String(x);
+    //alert(tempString);
+    
     if (x == 8 && y == 8 && sudoku[y][x] == 0) {
         possibleVect = getPossibilities(y, x);
         sudoku[y][x] = possibleVect[0];
-        document.getElementById(tempString).innerHTML = sudoku[y][x];
+        document.getElementById(tempString).value = sudoku[y][x];
         solved = true;
         return;
     }
@@ -278,10 +293,10 @@ function solve(y, x, solved){
     }
     if (sudoku[y][x] != 0) { 
         if (x < 8) {
-            solve(y, x + 1, solved);
+            solve(y, x + 1);
         }
         else if (x == 8) {
-            solve(y + 1, 0, solved);
+            solve(y + 1, 0);
         }
     }
     else {
@@ -292,24 +307,27 @@ function solve(y, x, solved){
         
         
         for (let i = 0; i < possibleVect.length; i++) {
+            //alert(tempString + " " + i);
+            //alert(tempString + " " + possibleVect[i]);
             if (solved == true) {
                 return;
             }
+            //alert(tempString + " " + possibleVect[i]);
             sudoku[y][x] = possibleVect[i];
-            document.getElementById(tempString).innerHTML = possibleVect[i];
+            //alert(sudoku);
+            document.getElementById(tempString).value = possibleVect[i];
             if (x < 8) {
-                //await delayTime(500);
-                solve(y, x+1, solved);
+                solve(y, x+1);
             }
             else if (x == 8) {
-                //await delayTime(500);
-                solve(y + 1, 0, solved);
+                solve(y + 1, 0);
             }
         }
         if (solved == false) {
             sudoku[y][x] = 0;
-            document.getElementById(tempString).innerHTML = possibleVect[i];
+            //document.getElementById(tempString).value = 0;
         }
+        
     }
 }
 
@@ -438,5 +456,6 @@ function getPossibilities(y, x){
         
     });
     //alert(possibleArr);
+   
     return possibleArr;
 }
