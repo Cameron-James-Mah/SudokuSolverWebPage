@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href = "styles.css" rel = "stylesheet" type = "text/css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
     <script src="sudoku.js"></script>
 </head>
 
-<button type="button" onclick="testFunc()">Solve</button>
-<button type="button" onclick="reset()">Reset</button>
+<h1 class="Title">Sudoku Solver</h1>
+
 <body>
     <!--id = y x || column row-->
-    <table id = "board">
+    <table id="board">
         <colgroup>
             <col>
             <col>
@@ -32,98 +32,187 @@
         </colgroup>
         <tbody>
             <tr>
-                <td><input maxlength="1" type = "number" id = "00" min = "0" max = "9" maxLength = "1" value = "1"/></td>
-                <td><input maxlength="1" type="number" id="01" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="02" min="0" max="9" maxLength="1" value="6" /></td>
-                <td><input maxlength="1" type="number" id="03" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="04" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="05" min="0" max="9" maxLength="1" value="2" /></td>
-                <td><input maxlength="1" type="number" id="06" min="0" max="9" maxLength="1" value="3" /></td>
-                <td><input maxlength="1" type="number" id="07" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="08" min="0" max="9" maxLength="1" value="0" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="00" min="1"
+                        max="9" value="1" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="01" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="02" min="1"
+                        max="9" value="6" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="03" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="04" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="05" min="1"
+                        max="9" value="2" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="06" min="1"
+                        max="9" value="3" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="07" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="08" min="1"
+                        max="9" value="" /></td>
             <tr>
-                <td><input maxlength="1" type="number" id="10" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="11" min="0" max="9" maxLength="1" value="5" /></td>
-                <td><input maxlength="1" type="number" id="12" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="13" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="14" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="15" min="0" max="9" maxLength="1" value="6" /></td>
-                <td><input maxlength="1" type="number" id="16" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="17" min="0" max="9" maxLength="1" value="9" /></td>
-                <td><input maxlength="1" type="number" id="18" min="0" max="9" maxLength="1" value="1" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="10" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="11" min="1"
+                        max="9" value="5" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="12" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="13" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="14" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="15" min="1"
+                        max="9" value="6" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="16" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="17" min="1"
+                        max="9" value="9" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="18" min="1"
+                        max="9" value="1" /></td>
             <tr>
-                <td><input maxlength="1" type="number" id="20" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="21" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="22" min="0" max="9" maxLength="1" value="9" /></td>
-                <td><input maxlength="1" type="number" id="23" min="0" max="9" maxLength="1" value="5" /></td>
-                <td><input maxlength="1" type="number" id="24" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="25" min="0" max="9" maxLength="1" value="1" /></td>
-                <td><input maxlength="1" type="number" id="26" min="0" max="9" maxLength="1" value="4" /></td>
-                <td><input maxlength="1" type="number" id="27" min="0" max="9" maxLength="1" value="6" /></td>
-                <td><input maxlength="1" type="number" id="28" min="0" max="9" maxLength="1" value="2" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="20" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="21" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="22" min="1"
+                        max="9" value="9" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="23" min="1"
+                        max="9" value="5" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="24" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="25" min="1"
+                        max="9" value="1" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="26" min="1"
+                        max="9" value="4" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="27" min="1"
+                        max="9" value="6" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="28" min="1"
+                        max="9" value="2" /></td>
         <tbody>
             <tr>
-                <td><input maxlength="1" type="number" id="30" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="31" min="0" max="9" maxLength="1" value="3" /></td>
-                <td><input maxlength="1" type="number" id="32" min="0" max="9" maxLength="1" value="7" /></td>
-                <td><input maxlength="1" type="number" id="33" min="0" max="9" maxLength="1" value="9" /></td>
-                <td><input maxlength="1" type="number" id="34" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="35" min="0" max="9" maxLength="1" value="5" /></td>
-                <td><input maxlength="1" type="number" id="36" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="37" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="38" min="0" max="9" maxLength="1" value="0" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="30" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="31" min="1"
+                        max="9" value="3" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="32" min="1"
+                        max="9" value="7" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="33" min="1"
+                        max="9" value="9" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="34" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="35" min="1"
+                        max="9" value="5" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="36" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="37" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="38" min="1"
+                        max="9" value="" /></td>
             <tr>
-                <td><input maxlength="1" type="number" id="40" min="0" max="9" maxLength="1" value="5" /></td>
-                <td><input maxlength="1" type="number" id="41" min="0" max="9" maxLength="1" value="8" /></td>
-                <td><input maxlength="1" type="number" id="42" min="0" max="9" maxLength="1" value="1" /></td>
-                <td><input maxlength="1" type="number" id="43" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="44" min="0" max="9" maxLength="1" value="2" /></td>
-                <td><input maxlength="1" type="number" id="45" min="0" max="9" maxLength="1" value="7" /></td>
-                <td><input maxlength="1" type="number" id="46" min="0" max="9" maxLength="1" value="9" /></td>
-                <td><input maxlength="1" type="number" id="47" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="48" min="0" max="9" maxLength="1" value="0" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="40" min="1"
+                        max="9" value="5" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="41" min="1"
+                        max="9" value="8" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="42" min="1"
+                        max="9" value="1" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="43" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="44" min="1"
+                        max="9" value="2" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="45" min="1"
+                        max="9" value="7" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="46" min="1"
+                        max="9" value="9" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="47" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="48" min="1"
+                        max="9" value="" /></td>
             <tr>
-                <td><input maxlength="1" type="number" id="50" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="51" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="52" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="53" min="0" max="9" maxLength="1" value="4" /></td>
-                <td><input maxlength="1" type="number" id="54" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="55" min="0" max="9" maxLength="1" value="8" /></td>
-                <td><input maxlength="1" type="number" id="56" min="0" max="9" maxLength="1" value="1" /></td>
-                <td><input maxlength="1" type="number" id="57" min="0" max="9" maxLength="1" value="5" /></td>
-                <td><input maxlength="1" type="number" id="58" min="0" max="9" maxLength="1" value="7" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="50" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="51" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="52" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="53" min="1"
+                        max="9" value="4" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="54" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="55" min="1"
+                        max="9" value="8" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="56" min="1"
+                        max="9" value="1" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="57" min="1"
+                        max="9" value="5" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="58" min="1"
+                        max="9" value="7" /></td>
         <tbody>
             <tr>
-                <td><input maxlength="1" type="number" id="60" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="61" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="62" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="63" min="0" max="9" maxLength="1" value="2" /></td>
-                <td><input maxlength="1" type="number" id="64" min="0" max="9" maxLength="1" value="6" /></td>
-                <td><input maxlength="1" type="number" id="65" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="66" min="0" max="9" maxLength="1" value="5" /></td>
-                <td><input maxlength="1" type="number" id="67" min="0" max="9" maxLength="1" value="4" /></td>
-                <td><input maxlength="1" type="number" id="68" min="0" max="9" maxLength="1" value="0" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="60" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="61" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="62" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="63" min="1"
+                        max="9" value="2" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="64" min="1"
+                        max="9" value="6" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="65" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="66" min="1"
+                        max="9" value="5" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="67" min="1"
+                        max="9" value="4" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="68" min="1"
+                        max="9" value="" /></td>
             <tr>
-                <td><input maxlength="1" type="number" id="70" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="71" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="72" min="0" max="9" maxLength="1" value="4" /></td>
-                <td><input maxlength="1" type="number" id="73" min="0" max="9" maxLength="1" value="1" /></td>
-                <td><input maxlength="1" type="number" id="74" min="0" max="9" maxLength="1" value="5" /></td>
-                <td><input maxlength="1" type="number" id="75" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="76" min="0" max="9" maxLength="1" value="6" /></td>
-                <td><input maxlength="1" type="number" id="77" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="78" min="0" max="9" maxLength="1" value="9" /></td>
+                <!--97 11 26-->
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="70" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="71" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="72" min="1"
+                        max="9" value="4" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="73" min="1"
+                        max="9" value="1" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="74" min="1"
+                        max="9" value="5" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="75" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="76" min="1"
+                        max="9" value="6" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="77" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="78" min="1"
+                        max="9" value="9" /></td>
             <tr>
-                <td><input maxlength="1" type="number" id="80" min="0" max="9" maxLength="1" value="9" /></td>
-                <td><input maxlength="1" type="number" id="81" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="82" min="0" max="9" maxLength="1" value="0" /></td>
-                <td><input maxlength="1" type="number" id="83" min="0" max="9" maxLength="1" value="8" /></td>
-                <td><input maxlength="1" type="number" id="84" min="0" max="9" maxLength="1" value="7" /></td>
-                <td><input maxlength="1" type="number" id="85" min="0" max="9" maxLength="1" value="4" /></td>
-                <td><input maxlength="1" type="number" id="86" min="0" max="9" maxLength="1" value="2" /></td>
-                <td><input maxlength="1" type="number" id="87" min="0" max="9" maxLength="1" value="1" /></td>
-                <td><input maxlength="1" type="number" id="88" min="0" max="9" maxLength="1" value="0" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="80" min="1"
+                        max="9" value="9" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="81" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="82" min="1"
+                        max="9" value="" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="83" min="1"
+                        max="9" value="8" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="84" min="1"
+                        max="9" value="7" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="85" min="1"
+                        max="9" value="4" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="86" min="1"
+                        max="9" value="2" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="87" min="1"
+                        max="9" value="1" /></td>
+                <td><input type="number" onkeydown="checkLength(this)" onkeyup="checkLength(this)" id="88" min="1"
+                        max="9" value="" /></td>
     </table>
+    <br>
+    <br>
+
+    <div class="options">
+        <button type="button" onclick="testFunc()">Solve</button>
+        <button type="button" onclick="reset()">Reset</button>
+    </div>
 </body>
 
 </html>

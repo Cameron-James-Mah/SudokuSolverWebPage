@@ -25,6 +25,8 @@
 
 table {
   border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 colgroup,
 tbody {
@@ -51,4 +53,20 @@ input {
 button {
   padding: 15px 32px;
   font-size: 15px;
+}
+.options {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+}
+
+.Title {
+  text-align: center;
+  font-size: 50px;
+}
+
+body {
+  background-color: rgb(146, 123, 72);
 }

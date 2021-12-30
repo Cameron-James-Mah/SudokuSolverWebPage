@@ -99,44 +99,56 @@ function testFunc(){
     sudoku[8][6] = document.getElementById("86").value;
     sudoku[8][7] = document.getElementById("87").value;
     sudoku[8][8] = document.getElementById("88").value;
-    /*
-    myArr[0][0] = 9;
-    document.getElementById("00").innerText = myArr[0][0]*/
-    //alert(document.getElementById("00").innerText);
-    //alert(getPossibilities(myArr, 0, 0));
-    //getPossibilities(myArr, 0, 0);
-    //alert(document.getElementById("00").value);
-    //alert(sudoku);
+    let original = sudoku;
 
-    
+    solved = false;
     if(validate(sudoku) == true){
         solve(0, 0);
+        if(solved == false){
+            alert("No solutions");
+            for(let i = 0; i < 9; i++){
+                for(let j = 0; j < 9; j++){
+                    if(isNaN(original[i][j] == true || typeof sudoku[i][j] !== 'number')){
+                        alert("Invalid Sudoku. Contains non numeric characters.");
+                        break;
+                    }
+                    if(original[i][j] == 0){
+                        document.getElementById(String(i)+String(j)).value = "";
+                    }
+                    else{
+                        document.getElementById(String(i)+String(j)).value = original[i][j];
+                    }
+                }
+            }
+        }
     }
     else{
         alert("Invalid Sudoku");
     }
-    //alert(sudoku);
+
     
-    
-    
-    //alert(sudoku);
-   
-    //alert(sudoku);
-   //getPossibilities(0, 8);
+}
+
+//Make sure cell is length of 1
+function checkLength(val){
+    if(val.value.toString().length > 1){
+        val.value = val.value.substr(1,2);
+    }
 }
 
 
+//Clear the board
 function reset(){
     for(let i = 0; i < 9; i++){
         sudoku[i] = [];
         for(let j = 0; j < 9; j++){
             sudoku[i][j] = 0;
-            document.getElementById(String(i)+String(j)).value = 0;
+            document.getElementById(String(i)+String(j)).value = "";
         }
     }
 }
 
-
+//Validate the board
 function validate(board){
     let squareSet = new Set();
     let rowSet = new Set();
@@ -236,6 +248,7 @@ function validate(board){
                 }
             }
         }
+        //97 11 26
         squareSet.clear();
         for(let i = 6; i < 9; i++){
             for(let j = 6; j < 9; j++){
