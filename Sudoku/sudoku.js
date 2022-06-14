@@ -6,8 +6,15 @@ let sudoku = [];
         }
     }
 
+let changeCache = [];
 let solved = false;
-
+let original = [];
+for(let i = 0; i < 9; i++){
+    original[i] = [];
+    for(let j = 0; j < 9; j++){
+        original[i][j] = 0;
+    }
+}
 function testFunc(){
     
     sudoku[0][0] = document.getElementById("00").value;
@@ -99,7 +106,13 @@ function testFunc(){
     sudoku[8][6] = document.getElementById("86").value;
     sudoku[8][7] = document.getElementById("87").value;
     sudoku[8][8] = document.getElementById("88").value;
-    let original = sudoku;
+    
+    for(let i = 0; i < 9; i++){
+        for(let j = 0; j < 9; j++){
+            original[i][j] = sudoku[i][j];
+        }
+    }
+    
 
     solved = false;
     if(validate(sudoku) == true){
@@ -121,10 +134,17 @@ function testFunc(){
                 }
             }
         }
+        else{
+            alert("Loading visualization..");
+            resetToOriginal();
+            visualize(0);
+        }
+        
     }
     else{
         alert("Invalid Sudoku");
     }
+    
 
     
 }
@@ -144,6 +164,16 @@ function reset(){
         for(let j = 0; j < 9; j++){
             sudoku[i][j] = 0;
             document.getElementById(String(i)+String(j)).value = "";
+        }
+    }
+}
+
+//Clear the board
+function resetToOriginal(){
+    alert(original);
+    for(let i = 0; i < 9; i++){
+        for(let j = 0; j < 9; j++){
+            document.getElementById(String(i)+String(j)).value = original[i][j];
         }
     }
 }
@@ -287,16 +317,24 @@ function validate(board){
 
 
 
+function cache(tempString, val){
+    var obj = {
+        "cord": tempString,
+        "val": val
+    }
+    changeCache.push(obj);
+}
+
 function solve(y, x){
-    //alert(sudoku);
     let possibleVect = [];
     let tempString = String(y)+String(x);
-    //alert(tempString);
-    
     if (x == 8 && y == 8 && sudoku[y][x] == 0) {
         possibleVect = getPossibilities(y, x);
         sudoku[y][x] = possibleVect[0];
         document.getElementById(tempString).value = sudoku[y][x];
+        cache(tempString, possibleVect[0]);
+        //cordCache.push(possibleVect[0]);
+        //setTimeout(() => delayedDisplay(tempString, sudoku[y][x]), 500);
         solved = true;
         return;
     }
@@ -317,33 +355,37 @@ function solve(y, x){
         if (possibleVect.length == 0) {
             return;
         }
-        
-        
         for (let i = 0; i < possibleVect.length; i++) {
-            //alert(tempString + " " + i);
-            //alert(tempString + " " + possibleVect[i]);
             if (solved == true) {
                 return;
             }
-            //alert(tempString + " " + possibleVect[i]);
             sudoku[y][x] = possibleVect[i];
-            //alert(sudoku);
             document.getElementById(tempString).value = possibleVect[i];
+            cache(tempString, possibleVect[i]);
+            //setTimeout(() => delayedDisplay(tempString, possibleVect[i]), 500);
             if (x < 8) {
                 solve(y, x+1);
+                //setTimeout(() => solve(y, x+1), 500);
             }
             else if (x == 8) {
                 solve(y + 1, 0);
+                //setTimeout(() => solve(y+1, 0), 500);
             }
         }
         if (solved == false) {
             sudoku[y][x] = 0;
-            //document.getElementById(tempString).value = 0;
+            cache(tempString, 0);
         }
         
+        
+        
     }
+    
 }
 
+function solveHelper(possibleVect, i, ){
+
+}
 
 function getPossibilities(y, x){
     let possibleSet = new Set();
@@ -472,3 +514,22 @@ function getPossibilities(y, x){
    
     return possibleArr;
 }
+
+
+function visualize(index){
+    if(index >= changeCache.length){
+        return;
+    }
+    setTimeout(() => visualize(index+1), 50);
+    if(changeCache[index].val == 0){
+        document.getElementById(changeCache[index].cord).value = "";
+    }
+    else{
+        document.getElementById(changeCache[index].cord).value = changeCache[index].val;
+    }
+    
+}
+
+
+
+
