@@ -8,6 +8,7 @@ let sudoku = [];
 
 let changeCache = [];
 let solved = false;
+let lockout = false;
 let original = [];
 for(let i = 0; i < 9; i++){
     original[i] = [];
@@ -16,7 +17,10 @@ for(let i = 0; i < 9; i++){
     }
 }
 function testFunc(){
-    
+    if(lockout){
+        return;
+    }
+    lockout = true;
     sudoku[0][0] = document.getElementById("00").value;
     sudoku[0][1] = document.getElementById("01").value;
     sudoku[0][2] = document.getElementById("02").value;
@@ -113,7 +117,7 @@ function testFunc(){
         }
     }
     
-
+    clearArr(changeCache);
     solved = false;
     if(validate(sudoku) == true){
         solve(0, 0);
@@ -135,7 +139,6 @@ function testFunc(){
             }
         }
         else{
-            alert("Loading visualization..");
             resetToOriginal();
             visualize(0);
         }
@@ -149,6 +152,12 @@ function testFunc(){
     
 }
 
+function clearArr(arr){
+    while(arr.length > 0){
+        arr.pop();
+    }
+}
+
 //Make sure cell is length of 1
 function checkLength(val){
     if(val.value.toString().length > 1){
@@ -159,6 +168,9 @@ function checkLength(val){
 
 //Clear the board
 function reset(){
+    if(lockout){
+        return;
+    }
     for(let i = 0; i < 9; i++){
         sudoku[i] = [];
         for(let j = 0; j < 9; j++){
@@ -170,7 +182,7 @@ function reset(){
 
 //Clear the board
 function resetToOriginal(){
-    alert(original);
+    //alert(original);
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
             document.getElementById(String(i)+String(j)).value = original[i][j];
@@ -333,8 +345,6 @@ function solve(y, x){
         sudoku[y][x] = possibleVect[0];
         document.getElementById(tempString).value = sudoku[y][x];
         cache(tempString, possibleVect[0]);
-        //cordCache.push(possibleVect[0]);
-        //setTimeout(() => delayedDisplay(tempString, sudoku[y][x]), 500);
         solved = true;
         return;
     }
@@ -362,14 +372,11 @@ function solve(y, x){
             sudoku[y][x] = possibleVect[i];
             document.getElementById(tempString).value = possibleVect[i];
             cache(tempString, possibleVect[i]);
-            //setTimeout(() => delayedDisplay(tempString, possibleVect[i]), 500);
             if (x < 8) {
                 solve(y, x+1);
-                //setTimeout(() => solve(y, x+1), 500);
             }
             else if (x == 8) {
                 solve(y + 1, 0);
-                //setTimeout(() => solve(y+1, 0), 500);
             }
         }
         if (solved == false) {
@@ -381,10 +388,6 @@ function solve(y, x){
         
     }
     
-}
-
-function solveHelper(possibleVect, i, ){
-
 }
 
 function getPossibilities(y, x){
@@ -496,22 +499,13 @@ function getPossibilities(y, x){
             possibleSet.add(sudoku[y][i]);
         }
     }
-    /*
-    possibleSet.forEach(num =>{
-        alert(num);
-    });*/
-    //alert(possibleArr);
     possibleSet.forEach(num =>{
         let index = possibleArr.indexOf(parseInt(num, 10));
-        //alert(index);
         if(index > -1){
             possibleArr.splice(index, 1);
-            //alert(num);
         }
         
     });
-    //alert(possibleArr);
-   
     return possibleArr;
 }
 
